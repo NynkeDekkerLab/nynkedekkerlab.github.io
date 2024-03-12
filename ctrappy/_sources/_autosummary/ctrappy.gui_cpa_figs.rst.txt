@@ -1,0 +1,5 @@
+﻿ctrappy.gui_cpa_figs
+====================
+
+.. automodule:: ctrappy.gui_cpa_figs
+    :members:

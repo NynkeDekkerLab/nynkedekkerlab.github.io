@@ -1,0 +1,5 @@
+ctrappy.gui_figures
+===================
+
+.. automodule:: ctrappy.gui_figures
+    :members:

@@ -1,0 +1,20 @@
+Installation
+============
+
+Make sure you have 3.9.16<=python<=3.10.11 installed (if something goes
+wrong with the :code:`ruptures` installation, try Python version 3.10.11). Then open a
+terminal/command prompt in the ctrappy root directory, and type: ::
+
+    python -m venv venv
+
+Then, on windows: ::
+
+    .\venv\Scripts\activate
+
+Or, on linux/macOS: ::
+
+    source venv/bin/activate
+
+Finally, install everything with ::
+
+    pip install -e .

@@ -1,0 +1,62 @@
+Input/output
+============
+
+Input format
+------------
+
+`Config <schemas/config_schema.html>`_
+
+Output format
+-------------
+
+The :code:`scans.csv` file contains the columns:
+
+* **col_dist**: float, colocalization distance, if colocalized
+* **colocalized** bool, True if colocalized
+* **color_id**: integer; color of spot, 0, 1, 2 for 'r', 'g', 'b', respectively
+* **color_str**: str; color of spot, 'r' or 'g' or 'b'
+* **corrected_intensity**: float, intensity corrected for crosstalk
+* **dna_end_pixel**: float, ending pixel coordinate of DNA (right offset)
+* **dna_length_kbp**: float, dna length in kbp
+* **dna_start_pixel**: float, starting pixel coordinate of DNA (left offset)
+* **file_name**: str, name of file on file system
+* **frame**: integer frame number
+* **frame_subindex**: integer, index for each spot in a scan in a frame (used for making LAP matrices)
+* **intensity**: integer, sum of pixel values in detected spot
+* **laser_colors**: str; all laser colors that were used during the experiment
+* **lifetime**: integer, lifetime of the track in frames
+* **n_frames**: integer, number of frames of scan
+* **n_scans**: integer, number of scans in experiment
+* **scan_id**: integer, identifier for scan
+* **spot_id**: integer, unique index for each spot (not used)
+* **step_count**: integer, number of steps in track (from step fitting the bleaching trace)
+* **time_s**: float, time in seconds
+* **trace_id**: integer, identifier for colocalized tracks of different colors
+* **track_id**: integer, a spot of a single color, tracked over time (unique after selecting a **scan_id** and **frame**)
+* **x_kbp**: float, distance to left bead edge in kbp
+* **x_micron**: float, distance to left bead edge in micron
+* **x_pixel**: float, x-location of spot in pixels in absolute coordinates
+* **y_pixel**: float, y-location of spot in pixels in absolute coordinates
+
+Table indices and class hierarchy
+---------------------------------
+
+The :code:`scans.csv` table has several index (:code:`*_id`) columns. The most useful way
+to think about these is as follows.
+
+A *track* is a single-color spot, tracked over multiple frames in a *scan*.
+Hence, a track contains multiple spot locations; at most one spot location
+for each frame, although some frames might be skipped.
+By picking a :code:`scan_id`, :code:`track_id` in the table
+you can find each separate track that is present in the dataset. The :code:`trace_id`
+index groups colocalized tracks together.
+
+This data hierarchy is mirrored in the way the code is organized into classes.
+An *Experiment* can contain multiple *Scans* (one for each image taken);
+a *Scan* can contain multiple *Traces*; a *Trace* can contain multiple
+(colocalized) *Tracks*. A *Track* is a single-color spot, tracked over
+multiple frames.
+
+Different physical quantities belong to different levels in this class hierarchy.
+Stoichiometry, for example, is a :code:`Trace` attribute, but fluorophore lifetime
+is a :code:`Track` attribute.

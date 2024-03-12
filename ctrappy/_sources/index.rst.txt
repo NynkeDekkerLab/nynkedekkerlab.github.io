@@ -1,0 +1,21 @@
+CTrapPy documentation
+=====================
+
+CTrapPy provides C-Trap (and Q-trap) scan processing for Python,
+using a streamlit GUI. This interface
+is used to process and filter experiments consisting of multiple C-trap
+output files, and to generate and customize figures from the
+resulting data. It can also be used in the lab, to quickly see the
+contents of raw microscope output.
+
+In the API tab you can find the full documentation of every single class and function
+in the ctrappy code.
+
+.. toctree::
+   :maxdepth: 1
+
+   self
+   installation
+   usage
+   io
+   api

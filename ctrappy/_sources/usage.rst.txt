@@ -1,0 +1,36 @@
+Usage
+=====
+
+Starting the GUI
+----------------
+
+To start up the GUI, first activate the virtual environment :code:`venv`.
+Then use the (PyCharm) terminal to run the command ::
+
+    python -m ctrappy.run
+
+The GUI should appear. If this is not the case, try to look
+for the address of the GUI in the terminal window and copy
+and paste that address into the address bar of a web browser.
+It should look something like :code:`http://localhost:8501`.
+
+If you get a streamlit error, you can also try from the root directory: ::
+
+    streamlit run ctrappy/gui.py
+
+Use the navigation button at the top left to select
+the functionality you want to use.
+
+GUI tabs
+--------
+
+An overview of the functionality of each GUI tab can be
+found in :code:`README_GUI_TABS.md`.
+
+Set GUI default values
+----------------------
+
+To set default values for the GUI, copy the file
+:code:`ymls/gui_defaults/gui_defaults.yml`, and rename it to
+:code:`ymls/gui_defaults/gui_custom.yml`. Now you can change the values
+in the file; these values will be the default values when running the GUI.

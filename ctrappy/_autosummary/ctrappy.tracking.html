@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ctrappy.tracking &mdash; CTrapPy 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ctrappy.gui_figures" href="ctrappy.gui_figures.html" />
+    <link rel="prev" title="ctrappy.scan" href="ctrappy.scan.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CTrapPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">CTrapPy documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Input/output</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.scan.html">ctrappy.scan</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ctrappy.tracking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.BeadDetector"><code class="docutils literal notranslate"><span class="pre">BeadDetector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.BeadDetector.detect"><code class="docutils literal notranslate"><span class="pre">BeadDetector.detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.Colocalizer"><code class="docutils literal notranslate"><span class="pre">Colocalizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.Colocalizer.colocalize"><code class="docutils literal notranslate"><span class="pre">Colocalizer.colocalize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.Detector"><code class="docutils literal notranslate"><span class="pre">Detector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.Detector.detect"><code class="docutils literal notranslate"><span class="pre">Detector.detect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.Tracker"><code class="docutils literal notranslate"><span class="pre">Tracker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.Tracker.lap_matrix"><code class="docutils literal notranslate"><span class="pre">Tracker.lap_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.Tracker.lap_matrix_segments"><code class="docutils literal notranslate"><span class="pre">Tracker.lap_matrix_segments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.tracking.Tracker.track"><code class="docutils literal notranslate"><span class="pre">Tracker.track()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.double_step_func"><code class="docutils literal notranslate"><span class="pre">double_step_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.fermi_dirac"><code class="docutils literal notranslate"><span class="pre">fermi_dirac()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.fit_gauss2d"><code class="docutils literal notranslate"><span class="pre">fit_gauss2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.gaussian"><code class="docutils literal notranslate"><span class="pre">gaussian()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.tracking.gaussian2d"><code class="docutils literal notranslate"><span class="pre">gaussian2d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_figures.html">ctrappy.gui_figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_cpa_figs.html">ctrappy.gui_cpa_figs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.file.html">ctrappy.file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.image.html">ctrappy.image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.diffusion.html">ctrappy.diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.stepfinder.html">ctrappy.stepfinder</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CTrapPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API</a></li>
+      <li class="breadcrumb-item active">ctrappy.tracking</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/ctrappy.tracking.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ctrappy.tracking">
+<span id="ctrappy-tracking"></span><h1>ctrappy.tracking<a class="headerlink" href="#module-ctrappy.tracking" title="Permalink to this heading"></a></h1>
+<p>Code for detecting, tracking and colocalizing spots.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.tracking.BeadDetector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">BeadDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_guess</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.BeadDetector" title="Permalink to this definition"></a></dt>
+<dd><p>Class (experimental) for bead detection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.BeadDetector.detect">
+<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intensity_profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.BeadDetector.detect" title="Permalink to this definition"></a></dt>
+<dd><p>Run bead detection on a projected intensity profile.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.tracking.Colocalizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">Colocalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colocalization_distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crosstalk_matrices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colocalization_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cf_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Colocalizer" title="Permalink to this definition"></a></dt>
+<dd><p>Class for determining colocalizations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colocalization_distance</strong> (<em>float</em>) – Threshold distance under which two spots can be considered colocalized.</p></li>
+<li><p><strong>crosstalk_matrices</strong> (<em>numpy array</em><em> of </em><em>floats with shape</em><em> (</em><em>3</em><em>, </em><em>3</em><em>, </em><em>3</em><em>)</em>) – Matrices for crosstalk correction; see explanation in config.yaml under “CROSSTALK CORRECTION”.</p></li>
+<li><p><strong>colocalization_frames</strong> (<em>int</em>) – Number of frames for colocalization calculation. Set to None for all frames.</p></li>
+<li><p><strong>cf_res</strong> (<em>float</em>) – Microns per pixel in the confocal image. Default: 0.05.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.Colocalizer.colocalize">
+<span class="sig-name descname"><span class="pre">colocalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_tracks_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laser_colors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Colocalizer.colocalize" title="Permalink to this definition"></a></dt>
+<dd><p>Find colocalized tracks; give colocalized tracks the same ‘trace_id’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_tracks_input</strong> (<em>pandas DataFrame</em>) – Input dataframe with columns [‘frame’, ‘color’, ‘intensity’, ‘x_pixel’, ‘y_pixel’, ‘track_id’].</p></li>
+<li><p><strong>laser_colors</strong> (<em>str</em>) – ‘r’, ‘g’, ‘b’, ‘rg’, ‘rb’, ‘gb’ or ‘rgb’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df_tracks</strong> – Output dataframe - same as input, but with added columns [‘colocalized’, ‘col_dist’,
+‘trace_id’, ‘corrected_intensity’] (bool, float, int, float).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.tracking.Detector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">Detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Detector" title="Permalink to this definition"></a></dt>
+<dd><p>Spot detector using Laplacian of Gaussian.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>int</em><em> or </em><em>list</em><em> of </em><em>3 ints</em>) – Detection radius (or radii per color).</p></li>
+<li><p><strong>thresholds</strong> (<em>list</em><em> of </em><em>3 floats</em>) – Detection threshold for each (r,g,b) color. Default: [0.5, 0.5, 0.5].</p></li>
+<li><p><strong>overlap</strong> (<em>float</em>) – Allowed overlap between detections.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.Detector.detect">
+<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Detector.detect" title="Permalink to this definition"></a></dt>
+<dd><p>Detect spots for all frames in a 4D numpy array with axes (frames, y, x, colors).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>numpy array</em><em> of </em><em>floats</em>) – 4D array containing (frames, y, x, colors).</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em> of </em><em>integers</em>) – Color indices to include (default: [0, 1, 2])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df_out</strong> – DataFrame containing spots.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.tracking.Tracker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">Tracker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_segment_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Tracker" title="Permalink to this definition"></a></dt>
+<dd><p>Class for tracking spots between frames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>skip_frames</strong> (<em>int</em>) – Max number of frames to skip for segment linking.</p></li>
+<li><p><strong>max_dist</strong> (<em>float</em>) – Maximum distance between points for frame-to-frame linking (pixels).</p></li>
+<li><p><strong>max_segment_dist</strong> (<em>float</em>) – Maximum distance between end and start points for segment linking (pixels).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.Tracker.lap_matrix">
+<span class="sig-name descname"><span class="pre">lap_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blobs0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blobs1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Tracker.lap_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Populate LAP matrix for frame-to-frame linking - see <a class="reference external" href="https://www.nature.com/articles/nmeth.1237.pdf">https://www.nature.com/articles/nmeth.1237.pdf</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.Tracker.lap_matrix_segments">
+<span class="sig-name descname"><span class="pre">lap_matrix_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_tracks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Tracker.lap_matrix_segments" title="Permalink to this definition"></a></dt>
+<dd><p>Populate LAP matrix for segment linking - see <a class="reference external" href="https://www.nature.com/articles/nmeth.1237.pdf">https://www.nature.com/articles/nmeth.1237.pdf</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.tracking.Tracker.track">
+<span class="sig-name descname"><span class="pre">track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_tracks_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.Tracker.track" title="Permalink to this definition"></a></dt>
+<dd><p>Do LAP tracking. df_tracks_input needs to be a dataframe with columns [‘frame’, ‘x’, ‘y’];
+output will contain a new column ‘track_id’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_tracks_input</strong> (<em>pandas DataFrame</em>) – Input dataframe with columns [‘frame’, ‘frame_subindex’, ‘x’, ‘y’].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df_tracks</strong> – Output dataframe - same as input, but with added column ‘track_id’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.tracking.double_step_func">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">double_step_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.double_step_func" title="Permalink to this definition"></a></dt>
+<dd><p>Fitting function for bead detection; trying to find steps in the projected intensity at the bead edges.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.tracking.fermi_dirac">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">fermi_dirac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.fermi_dirac" title="Permalink to this definition"></a></dt>
+<dd><p>Fermi-Dirac distribution.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.tracking.fit_gauss2d">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">fit_gauss2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imgdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.fit_gauss2d" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper function for fitting a 2D Gaussian.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.tracking.gaussian">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Gaussian function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.tracking.gaussian2d">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.tracking.</span></span><span class="sig-name descname"><span class="pre">gaussian2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.tracking.gaussian2d" title="Permalink to this definition"></a></dt>
+<dd><p>2D Gaussian function.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ctrappy.scan.html" class="btn btn-neutral float-left" title="ctrappy.scan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ctrappy.gui_figures.html" class="btn btn-neutral float-right" title="ctrappy.gui_figures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Edo van Veen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

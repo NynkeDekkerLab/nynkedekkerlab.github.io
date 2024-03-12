@@ -1,0 +1,5 @@
+ctrappy.image
+=============
+
+.. automodule:: ctrappy.image
+    :members:

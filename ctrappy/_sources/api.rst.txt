@@ -1,0 +1,15 @@
+API
+===
+
+.. autosummary::
+   :toctree: _autosummary
+   :recursive:
+
+   ctrappy.scan
+   ctrappy.tracking
+   ctrappy.gui_figures
+   ctrappy.gui_cpa_figs
+   ctrappy.file
+   ctrappy.image
+   ctrappy.diffusion
+   ctrappy.stepfinder

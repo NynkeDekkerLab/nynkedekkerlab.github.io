@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ctrappy.scan &mdash; CTrapPy 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ctrappy.tracking" href="ctrappy.tracking.html" />
+    <link rel="prev" title="API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CTrapPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">CTrapPy documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Input/output</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ctrappy.scan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.Experiment"><code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.convert_to_kbp"><code class="docutils literal notranslate"><span class="pre">Experiment.convert_to_kbp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.convert_to_kbp_autocorrelation"><code class="docutils literal notranslate"><span class="pre">Experiment.convert_to_kbp_autocorrelation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.count_traces"><code class="docutils literal notranslate"><span class="pre">Experiment.count_traces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_color"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_loc_interval_kbp"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_loc_interval_kbp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_loc_kbp"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_loc_kbp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_starting_frame"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_starting_frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_stoichiometry"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_stoichiometry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.filter_by_total_count"><code class="docutils literal notranslate"><span class="pre">Experiment.filter_by_total_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.get_splits"><code class="docutils literal notranslate"><span class="pre">Experiment.get_splits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.get_summary_table"><code class="docutils literal notranslate"><span class="pre">Experiment.get_summary_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.set_t"><code class="docutils literal notranslate"><span class="pre">Experiment.set_t()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Experiment.to_dataframe"><code class="docutils literal notranslate"><span class="pre">Experiment.to_dataframe()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.Scan"><code class="docutils literal notranslate"><span class="pre">Scan</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Scan.total_spot_count"><code class="docutils literal notranslate"><span class="pre">Scan.total_spot_count()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.Trace"><code class="docutils literal notranslate"><span class="pre">Trace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Trace.get_loc_interval"><code class="docutils literal notranslate"><span class="pre">Trace.get_loc_interval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Trace.get_starting_loc"><code class="docutils literal notranslate"><span class="pre">Trace.get_starting_loc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Trace.run_calibration_step_count"><code class="docutils literal notranslate"><span class="pre">Trace.run_calibration_step_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Trace.total_count"><code class="docutils literal notranslate"><span class="pre">Trace.total_count()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.Track"><code class="docutils literal notranslate"><span class="pre">Track</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Track.count_steps"><code class="docutils literal notranslate"><span class="pre">Track.count_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.scan.Track.get_starting_loc"><code class="docutils literal notranslate"><span class="pre">Track.get_starting_loc()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.filter_experiment"><code class="docutils literal notranslate"><span class="pre">filter_experiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.get_step_calibration"><code class="docutils literal notranslate"><span class="pre">get_step_calibration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.rerun_colocalization"><code class="docutils literal notranslate"><span class="pre">rerun_colocalization()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.scan.set_laser_colors"><code class="docutils literal notranslate"><span class="pre">set_laser_colors()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.tracking.html">ctrappy.tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_figures.html">ctrappy.gui_figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_cpa_figs.html">ctrappy.gui_cpa_figs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.file.html">ctrappy.file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.image.html">ctrappy.image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.diffusion.html">ctrappy.diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.stepfinder.html">ctrappy.stepfinder</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CTrapPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API</a></li>
+      <li class="breadcrumb-item active">ctrappy.scan</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/ctrappy.scan.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ctrappy.scan">
+<span id="ctrappy-scan"></span><h1>ctrappy.scan<a class="headerlink" href="#module-ctrappy.scan" title="Permalink to this heading"></a></h1>
+<p>Main ctrappy functionality.</p>
+<p>An Experiment contains multiple Scans. A Scan contains multiple Traces, consisting of colocalized Tracks.
+This Experiment object can then be used as input for plotting functions in ctrappy.gui_figures</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">Experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laser_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dna_length_kbp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redo_step_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment" title="Permalink to this definition"></a></dt>
+<dd><p>An Experiment contains all data that comes from processing a tiff directory. It is initialized with a DataFrame,
+usually named ‘scans.csv’.</p>
+<p>This input DataFrame (data) contains (at least) the columns: file_name, scan_id, trace_id, track_id
+color_id, color_str, frame, corrected_intensity, x_pixel, dna_start_pixel, dna_end_pixel, n_scans, n_frames. The
+config_calibration dictionary is read from a config.yaml file. Laser colors are ‘r’, ‘g’, ‘b’, ‘rg’, ‘rb’, ‘gb’ or
+‘rgb’, corresponding to which lasers were on during the experiment. The dna length in kbp is given by
+dna_length_kbp.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.convert_to_kbp">
+<span class="sig-name descname"><span class="pre">convert_to_kbp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dna_length_kbp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.convert_to_kbp" title="Permalink to this definition"></a></dt>
+<dd><p>Convert track locations to kbp; only input is the DNA length in kbp.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.convert_to_kbp_autocorrelation">
+<span class="sig-name descname"><span class="pre">convert_to_kbp_autocorrelation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dna_length_kbp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.convert_to_kbp_autocorrelation" title="Permalink to this definition"></a></dt>
+<dd><p>Use autocorrelation to convert track locations to kbp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dna_length_kbp</strong> (<em>float</em>) – Dna length in kilobasepairs</p></li>
+<li><p><strong>loc_filter</strong> (<em>2-tuple</em><em> of </em><em>floats</em>) – Keep spots within these kbp-location values, to perform autocorrelation.</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – ‘r’, ‘g’ or ‘b’.</p></li>
+<li><p><strong>n_bins</strong> (<em>int</em>) – Number of bins for binning before calculating autocorrelation.</p></li>
+<li><p><strong>offsets</strong> (<em>list</em><em> of </em><em>floats</em><em> or </em><em>ints</em>) – List of offsets to try (in pixels), relative to initial guess.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>corr_val</strong> – Correlation values corresponding to offsets list.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of floats</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.count_traces">
+<span class="sig-name descname"><span class="pre">count_traces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.count_traces" title="Permalink to this definition"></a></dt>
+<dd><p>Count total number of traces in Experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_color">
+<span class="sig-name descname"><span class="pre">filter_by_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_color" title="Permalink to this definition"></a></dt>
+<dd><p>Filter entire Experiment, keep only data of 1 color given by color_str (string).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_loc_interval_kbp">
+<span class="sig-name descname"><span class="pre">filter_by_loc_interval_kbp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intervals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_coloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_loc_interval_kbp" title="Permalink to this definition"></a></dt>
+<dd><p>Filter tracks by their entire location interval (kbp), keep (or remove, by setting reverse=True)
+tracks that overlap with the input intervals [(x0, x1), …] - return new Experiment object.
+keep_coloc=True does the filtering on Trace level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_loc_kbp">
+<span class="sig-name descname"><span class="pre">filter_by_loc_kbp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_coloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_loc_kbp" title="Permalink to this definition"></a></dt>
+<dd><p>Filter tracks by starting location (kbp), keep locations between x0 and x1 - return new Experiment object.
+keep_coloc=True does the filtering on Trace level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_starting_frame">
+<span class="sig-name descname"><span class="pre">filter_by_starting_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_starting_frame" title="Permalink to this definition"></a></dt>
+<dd><p>Filter tracks by starting frame - return new Experiment object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_stoichiometry">
+<span class="sig-name descname"><span class="pre">filter_by_stoichiometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_stoichiometry" title="Permalink to this definition"></a></dt>
+<dd><p>Filter traces by stoichiometry, keep traces within color ranges - return new Experiment object.
+Input ranges are 2-tuples of integers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.filter_by_total_count">
+<span class="sig-name descname"><span class="pre">filter_by_total_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_coloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.filter_by_total_count" title="Permalink to this definition"></a></dt>
+<dd><p>Filter tracks by count, keep tracks under input - return new Experiment object.
+keep_coloc=True does the filtering on Trace level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.get_splits">
+<span class="sig-name descname"><span class="pre">get_splits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.get_splits" title="Permalink to this definition"></a></dt>
+<dd><p>For each scan, check if any traces split off of other traces, with a maximum distance of d.
+Detected splits are stored in trace.split_parent. It is important not to filter by starting frame
+before running this method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.get_summary_table">
+<span class="sig-name descname"><span class="pre">get_summary_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.get_summary_table" title="Permalink to this definition"></a></dt>
+<dd><p>Output a summary table of the Experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.set_t">
+<span class="sig-name descname"><span class="pre">set_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_time_s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.set_t" title="Permalink to this definition"></a></dt>
+<dd><p>Convert track frame values to time (s) values; only input is the frame time in seconds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Experiment.to_dataframe">
+<span class="sig-name descname"><span class="pre">to_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Experiment.to_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Export Experiment to pandas DataFrame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.scan.Scan">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">Scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confocal_pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_counting_divide</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redo_step_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Scan" title="Permalink to this definition"></a></dt>
+<dd><p>Contains spots, tracks and traces extracted from a single tiff file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Scan.total_spot_count">
+<span class="sig-name descname"><span class="pre">total_spot_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Scan.total_spot_count" title="Permalink to this definition"></a></dt>
+<dd><p>Get total spot (Trace) count in Scan.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.scan.Trace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">Trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confocal_pixel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_counting_divide</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redo_step_fitting</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Trace" title="Permalink to this definition"></a></dt>
+<dd><p>Contains colocalized Tracks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Trace.get_loc_interval">
+<span class="sig-name descname"><span class="pre">get_loc_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_micron</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Trace.get_loc_interval" title="Permalink to this definition"></a></dt>
+<dd><p>Get location interval of tracks within trace.
+Default units: micron; witch to kbp with x_micron=False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Trace.get_starting_loc">
+<span class="sig-name descname"><span class="pre">get_starting_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_micron</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Trace.get_starting_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Get average starting location of tracks within trace.
+Default units: micron; witch to kbp with x_micron=False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Trace.run_calibration_step_count">
+<span class="sig-name descname"><span class="pre">run_calibration_step_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_calibration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Trace.run_calibration_step_count" title="Permalink to this definition"></a></dt>
+<dd><p>Run the step counter on all Tracks in the Trace, using a step_calibration dictionary containing
+min_step_sizes and avg_step_sizes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Trace.total_count">
+<span class="sig-name descname"><span class="pre">total_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Trace.total_count" title="Permalink to this definition"></a></dt>
+<dd><p>Get total fluorophore step count of the Trace.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.scan.Track">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confocal_pixel_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Track" title="Permalink to this definition"></a></dt>
+<dd><p>Contains single color spots that have been tracked throughout different frames.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Track.count_steps">
+<span class="sig-name descname"><span class="pre">count_steps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divide_by_avg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Track.count_steps" title="Permalink to this definition"></a></dt>
+<dd><p>Count steps using ctrappy.stepfinder, using a step_calibration dictionary. By default we
+divide by the average step size to process large steps correctly; for pure step counting, set
+divide_by_avg to False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.scan.Track.get_starting_loc">
+<span class="sig-name descname"><span class="pre">get_starting_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_micron</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.Track.get_starting_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Get starting location by averaging the first 5 frames. Units are microns by default; switch to kbp with
+x_micron=False.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.scan.filter_experiment">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">filter_experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kbp_locs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_coloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.filter_experiment" title="Permalink to this definition"></a></dt>
+<dd><p>Filter experiment tracks (or traces) by starting frame, kbp location interval, and total count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>experiment</strong> (<a class="reference internal" href="#ctrappy.scan.Experiment" title="ctrappy.scan.Experiment"><em>Experiment</em></a>) – Input experiment object.</p></li>
+<li><p><strong>starting_frame</strong> (<em>int</em>) – Any tracks starting from this frame onwards are filtered out.</p></li>
+<li><p><strong>kbp_locs</strong> (<em>2-tuple</em><em> of </em><em>floats</em>) – Any tracks outside this location interval (in kbps) are filtered out.</p></li>
+<li><p><strong>total_count</strong> (<em>int</em>) – Any tracks above this count are filtered out.</p></li>
+<li><p><strong>keep_coloc</strong> (<em>bool</em>) – If True, do the filtering on the Trace level, preserving colocalizations. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>experiment_filtered</strong> – Filtered experiment object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ctrappy.scan.Experiment" title="ctrappy.scan.Experiment">Experiment</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.scan.get_step_calibration">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">get_step_calibration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laser_colors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.get_step_calibration" title="Permalink to this definition"></a></dt>
+<dd><p>Convenience wrapper for set_laser_colors().</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.scan.rerun_colocalization">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">rerun_colocalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.rerun_colocalization" title="Permalink to this definition"></a></dt>
+<dd><p>Rerun colocalization on an Experiment, using ctrappy.tracking.Colocalizer, which takes a dataframe input.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.scan.set_laser_colors">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.scan.</span></span><span class="sig-name descname"><span class="pre">set_laser_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laser_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.scan.set_laser_colors" title="Permalink to this definition"></a></dt>
+<dd><p>Get appropriate parameters from config, depending on laser colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>laser_colors</strong> (<em>str</em>) – Laser colors (‘r’, ‘g’, ‘b’, ‘rg’, ‘rb’, ‘gb’, or ‘rgb’).</p></li>
+<li><p><strong>config</strong> (<em>dict</em>) – Config dictionary from yaml file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>min_step_sizes</strong> (<em>array of floats</em>) – List of minimum step sizes for stoichiometry with step counting for [r, g, b].</p></li>
+<li><p><strong>avg_step_sizes</strong> (<em>array of floats</em>) – List of average step sizes for stoichiometry with step counting for [r, g, b].</p></li>
+<li><p><strong>color_ids</strong> (<em>array of ints</em>) – List of laser color indices in experiment.</p></li>
+<li><p><strong>color_strs</strong> (<em>array of strs</em>) – List of laser colors in experiment.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ctrappy.tracking.html" class="btn btn-neutral float-right" title="ctrappy.tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Edo van Veen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

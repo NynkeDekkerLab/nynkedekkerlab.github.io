@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ctrappy.image &mdash; CTrapPy 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ctrappy.diffusion" href="ctrappy.diffusion.html" />
+    <link rel="prev" title="ctrappy.file" href="ctrappy.file.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            CTrapPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">CTrapPy documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io.html">Input/output</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.scan.html">ctrappy.scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.tracking.html">ctrappy.tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_figures.html">ctrappy.gui_figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.gui_cpa_figs.html">ctrappy.gui_cpa_figs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.file.html">ctrappy.file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ctrappy.image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.apply_offset_mask"><code class="docutils literal notranslate"><span class="pre">Image.apply_offset_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.export"><code class="docutils literal notranslate"><span class="pre">Image.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.export_video"><code class="docutils literal notranslate"><span class="pre">Image.export_video()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.frame"><code class="docutils literal notranslate"><span class="pre">Image.frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.plot"><code class="docutils literal notranslate"><span class="pre">Image.plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctrappy.image.Image.to_tiff"><code class="docutils literal notranslate"><span class="pre">Image.to_tiff()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.image.get_spots"><code class="docutils literal notranslate"><span class="pre">get_spots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctrappy.image.track_spots"><code class="docutils literal notranslate"><span class="pre">track_spots()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.diffusion.html">ctrappy.diffusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ctrappy.stepfinder.html">ctrappy.stepfinder</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CTrapPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API</a></li>
+      <li class="breadcrumb-item active">ctrappy.image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_autosummary/ctrappy.image.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ctrappy.image">
+<span id="ctrappy-image"></span><h1>ctrappy.image<a class="headerlink" href="#module-ctrappy.image" title="Permalink to this heading"></a></h1>
+<p>This module contains the Image class for opening a C-trap scan image.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ctrappy.image.Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctrappy.image.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lumicks_scan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_force_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image" title="Permalink to this definition"></a></dt>
+<dd><p>C-trap scan image object. Initialization converts scan data to shape (frames, y, x, channels),
+also for single frame scans.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>int</em><em> or </em><em>str</em>) – Blob name; should be int or str(int).</p></li>
+<li><p><strong>lumicks_scan</strong> (<em>lumicks.pylake scan object</em>) – Scan data.</p></li>
+<li><p><strong>metadata</strong> (<em>dict</em>) – Scan metadata. Default: None</p></li>
+<li><p><strong>df_force_distance</strong> (<em>pandas DataFrame</em>) – Force/distance data during the scan. Default: None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.apply_offset_mask">
+<span class="sig-name descname"><span class="pre">apply_offset_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.apply_offset_mask" title="Permalink to this definition"></a></dt>
+<dd><p>Apply offset mask to self.data, getting rid of any bead data to prevent spot detection on the beads.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_tiff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_fddata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.export" title="Permalink to this definition"></a></dt>
+<dd><p>Export image data to tiff, metadata to yaml and force-distance data to csv.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.export_video">
+<span class="sig-name descname"><span class="pre">export_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.export_video" title="Permalink to this definition"></a></dt>
+<dd><p>Export scan as .avi video.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.frame" title="Permalink to this definition"></a></dt>
+<dd><p>Return a single frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int</em>) – Frame number.</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em> of </em><em>3 bools</em><em> or </em><em>None</em>) – For each color (r, g, b), apply a mask. If None, use all colors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>frame_data</strong> – Frame data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy array with shape (y_size_fig, x_size_fig, 3)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plot frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ctrappy.image.Image.to_tiff">
+<span class="sig-name descname"><span class="pre">to_tiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(200000.0,</span> <span class="pre">200000.0,</span> <span class="pre">'CENTIMETER')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.Image.to_tiff" title="Permalink to this definition"></a></dt>
+<dd><p>Save to tiff.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.image.get_spots">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.image.</span></span><span class="sig-name descname"><span class="pre">get_spots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_edge_spots</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.get_spots" title="Permalink to this definition"></a></dt>
+<dd><p>Detect spots in the image, given user input values for detection thresholds, radius and image offsets.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ctrappy.image.track_spots">
+<span class="sig-prename descclassname"><span class="pre">ctrappy.image.</span></span><span class="sig-name descname"><span class="pre">track_spots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_spots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_skip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spot_dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctrappy.image.track_spots" title="Permalink to this definition"></a></dt>
+<dd><p>Track spots in df_spots dataframe, given user input values for max frame skip and max spot distance.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ctrappy.file.html" class="btn btn-neutral float-left" title="ctrappy.file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ctrappy.diffusion.html" class="btn btn-neutral float-right" title="ctrappy.diffusion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Edo van Veen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
